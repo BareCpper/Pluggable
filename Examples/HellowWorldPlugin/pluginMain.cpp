@@ -18,7 +18,7 @@ namespace gfx
 
 	extern "C"
 	{
-		const frx::Plugin::Info* plugin_GetInfo(void)
+		const frx::Plugin::Info* pluginGetInfo()
 		{
 			return &info;
 		}
@@ -27,7 +27,7 @@ namespace gfx
 		// @todo ANDROID: Use JNI_OnLoad()
 		// @todo WIN32: use DllMain()
 		// @todo LINUX: __attribute__((constructor)) void dllLoad(); and __attribute__((destructor)) void dllUnload();
-		Bool plugin_Activate(void) throw()
+		Bool pluginActivate() throw()
 		{
 			if (!frx::isValidPointer(oglRenderPlugin))
 				oglRenderPlugin = new OpenGLRenderer();
@@ -37,7 +37,7 @@ namespace gfx
 			return frx::isValidPointer(oglRenderPlugin);
 		}
 
-		void plugin_Deactivate(void)
+		void pluginDeactivate()
 		{
 			frx::safeDelete(oglRenderPlugin);
 		}

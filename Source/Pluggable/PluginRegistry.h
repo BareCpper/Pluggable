@@ -12,9 +12,7 @@
 #ifndef KISMOFRX_PLUGINREGISTRY_H
 #define KISMOFRX_PLUGINREGISTRY_H
 
-#include "KismoFRX/Types.h"
-#include "KismoFRX/Common.h"
-#include "KismoFRX/Singleton.h"
+#include "Singleton.h"
 #include <set>
 
 /** 

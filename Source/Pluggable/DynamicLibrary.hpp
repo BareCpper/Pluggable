@@ -2,18 +2,18 @@
 #define KISMOENGINE_PLUGGABLE_DYNAMICLIBRARY_H
 
 #ifdef WIN32
-#include "os/DynamicLibrary_win32.hpp"
+//#include "os/DynamicLibrary_win32.hpp"
 #elif __APPLE__
-#include "os/DynamicLibrary_darwin.hpp"
+//#include "os/DynamicLibrary_darwin.hpp"
 #elif __linux__
-#include "os/DynamicLibrary_linux.hpp"
+//#include "os/DynamicLibrary_linux.hpp"
 #endif
 
 namespace win32
 {
 	/** Win32 implementation of frx::Plugin
 	*/
-	class DynamicLibrary : public frx::Plugin
+	class DynamicLibrary
 	{
 	public:
 
@@ -24,6 +24,8 @@ namespace win32
 		/* \copydoc core::Plugin::~Plugin
 		*/
 		~DynamicLibrary();
+
+		bool isOpen() const;
 
 		/** \copydoc core::Plugin::load
 		*/
@@ -47,8 +49,14 @@ namespace win32
 		String getLastError();
 
 	protected:
-		
-		HMODULE m_hwnd; ///< Handle to the plugin/Dll module
+
+#ifdef WIN32
+		HMODULE hwnd_; ///< Handle to the plugin/Dll module
+#elif __APPLE__
+		//TODO:
+#elif __linux__
+		//TODO:
+#endif
 
 	};
 
